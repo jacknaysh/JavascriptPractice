@@ -1,0 +1,141 @@
+<html>
+<body>
+    <h1 class="result">Rock Paper Scissors</h1>
+    <h2 class="result" id="winner">First to 5 wins!</h2>
+
+      <button onclick="choose('Rock')">Rock</button>
+      <button onclick="choose('Paper')">Paper</button>
+      <button onclick="choose('Scissors')">Scissors</button>
+      <button onclick="restart()">Play Again!</button><br>
+
+   
+    
+<a>Your Score...</a><a id="playerScore"></a><br>
+    
+    
+<a>My Score...</a><a id="compScore"></a>
+    
+   
+      <div id="resultBox"
+        <p>Result </p><p id="box"></p>
+      </div><br>
+      
+    
+      
+      
+
+</body>
+
+<script>
+
+    const options = ['Rock', 'Paper', 'Scissors']
+
+
+    let playerChoice = "";
+    let result = ""
+    let compChoice = ""
+    let random = 0
+    let count = 0
+    let compCount = 0
+
+
+
+    function choose(choice){
+        playerChoice = choice
+        random = Math.floor(Math.random() * options.length);
+        compChoice = options[random]
+        console.log("You chose: " ,playerChoice)
+        console.log("Computer chose: ",compChoice) 
+        if (playerChoice == compChoice ){
+            result = "Draw"
+            document.getElementById("box").innerHTML = result;
+        } else if (playerChoice == "Rock" && compChoice == options[1] ){
+            result = "Round Lost"
+            compCount++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("compScore").innerHTML = compCount;
+        } else if (playerChoice == "Rock" && compChoice == options[2] ){
+            result = "Round Won"
+            count++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("playerScore").innerHTML = count;
+        } else if (playerChoice == "Paper" && compChoice == options[0] ){
+            result = "Round Won"
+            count++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("playerScore").innerHTML = count;
+        } else if (playerChoice == "Paper" && compChoice == options[2] ){
+            result = "Round Lost"
+            compCount++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("compScore").innerHTML = compCount;
+        } else if (playerChoice == "Scissors" && compChoice == options[0] ){
+            result = "Round Lost"
+            compCount++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("compScore").innerHTML = compCount;
+        } else if (playerChoice == "Scissors" && compChoice == options[1] ){
+            result = "Round Won"
+            count++
+            document.getElementById("box").innerHTML = result;
+            document.getElementById("playerScore").innerHTML = count;
+        }
+        if (count == 5){
+           document.getElementById("winner").innerHTML = "you won the game"
+        } else if (compCount == 5) {
+            document.getElementById("winner").innerHTML = "you lost the game"
+    }  
+
+        
+    }
+    function restart(){
+        document.getElementById("box").innerHTML = ""
+        document.getElementById("playerScore").innerHTML = ""
+        document.getElementById("compScore").innerHTML = ""
+    }
+    
+    
+
+    
+</script>
+
+<style>
+    body {
+        text-align: center;
+    }
+    .result {
+        text-align: center;
+        font-family: sans-serif;
+    }
+    button {
+
+        background: #c21e83;
+        border: 0;
+        padding: 10px 20px;
+        margin-top: 20px;
+        color: white;
+        border-radius: 20px;
+        font-size: 20px;
+        font-family:sans-serif;
+    }
+    #resultBox{
+        background-color: crimson;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        position: absolute;
+        left: 565px;
+        margin-top: 20px;
+        width: 150;
+        height: 150;
+        font-size: 35;
+        color: aliceblue;
+        border-radius: 3px;
+    }
+.scoreBox{
+    text-align: 25%;
+}
+</style>
+
+
+</html>
